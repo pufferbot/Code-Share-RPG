@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 [System.Serializable]
 public class Item : ScriptableObject
@@ -11,7 +10,7 @@ public class Item : ScriptableObject
     public int value;
     public float weight;
     public bool stackable;
-    
+    public string description;
 }
 
 [System.Serializable]
@@ -39,6 +38,10 @@ public class ItemInstance {
     public Sprite GetItemIcon()
     {
         return item.icon;
+    }
+    public string GetItemDescription()
+    {
+        return item.description;
     }
 
     public float GetWeight()

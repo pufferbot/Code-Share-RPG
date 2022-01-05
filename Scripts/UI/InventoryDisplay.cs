@@ -13,6 +13,8 @@ public class InventoryDisplay : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI itemNameText;
     [SerializeField] Image iconDisplay;
+    [SerializeField] TextMeshProUGUI itemInfoText;
+    [SerializeField] TextMeshProUGUI itemDescriptionText;
     [SerializeField] TextMeshProUGUI carryWeightText;
 
     void OnEnable(){
@@ -60,6 +62,8 @@ public class InventoryDisplay : MonoBehaviour
 
         //Set the selected item display info
         itemNameText.SetText ( _slot.itemInstance.GetItemName() );
+        //itemInfoText.SetText(_slot.itemInstance.GetItemName());
+        itemDescriptionText.SetText(_slot.itemInstance.GetItemDescription());
         iconDisplay.sprite = _slot.icon.sprite;
         iconDisplay.SetNativeSize();
         RectTransform rt = iconDisplay.transform.GetComponent<RectTransform>();

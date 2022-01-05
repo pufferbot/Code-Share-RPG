@@ -34,7 +34,7 @@ public class Movement : MonoBehaviour
         grounded = controller.isGrounded;
         if (controller.isGrounded)
         {
-            verticalVelocity.y = 0;
+            verticalVelocity.y = -1;
         }
         else
         {
@@ -50,6 +50,13 @@ public class Movement : MonoBehaviour
             jump = false;
         }
 
+        //v = sqr(-2 * jmpHeight * gravity)
+        if (jump && controller.isGrounded)
+        {
+            verticalVelocity.y = Mathf.Sqrt(-2 * jumpHeight * gravity);
+            jump = false;
+        }
+
         if (isSprinting && playerStats.currentStamina > 0 && horizontalInput != new Vector2(0,0))
         {
             playerStats.DamageStamina((15 - playerStats.dexterity.GetValue()) * Time.deltaTime); //Dexterity affects how much stamina sprinting uses
@@ -58,13 +65,6 @@ public class Movement : MonoBehaviour
 
         Vector3 horizontalVelocity = (transform.right * horizontalInput.x + transform.forward * horizontalInput.y) * totalSpeed;
         controller.Move(horizontalVelocity * Time.deltaTime);
-
-        //v = sqr(-2 * jmpHeight * gravity)
-        if(jump && controller.isGrounded)
-        {
-            verticalVelocity.y = Mathf.Sqrt(-2 * jumpHeight * gravity);
-            jump = false;
-        }
 
         verticalVelocity.y += gravity * Time.deltaTime;
         controller.Move(verticalVelocity * Time.deltaTime);
