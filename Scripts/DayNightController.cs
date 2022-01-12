@@ -13,6 +13,8 @@ public class DayNightController : MonoBehaviour
     public Light sun;
     public Light moon;
     public Volume skyVolume;
+
+    public float starsBrightness = 7500f;
     public AnimationCurve starsCurve;
 
     private bool isNight;
@@ -50,7 +52,7 @@ public class DayNightController : MonoBehaviour
         sun.transform.rotation = Quaternion.Euler(sunRotation, -150.0f, 0);
         moon.transform.rotation = Quaternion.Euler(moonRotation, -150.0f, 0);
 
-        sky.spaceEmissionMultiplier.value = starsCurve.Evaluate(alpha) * 5000f;
+        sky.spaceEmissionMultiplier.value = starsCurve.Evaluate(alpha) * starsBrightness;
 
         CheckNightDayTransition();
     }
