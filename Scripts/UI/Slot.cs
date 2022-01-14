@@ -22,7 +22,7 @@ public class Slot : MonoBehaviour
         icon.sprite = null;
     }
 
-    public void SetItem(ItemInstance instance)
+    public void SetItem(ItemInstance instance) //setting the slot to display an item
     {
         nameBox.text = instance.GetItemName();
         weightBox.text = instance.GetWeight().ToString();
@@ -34,13 +34,13 @@ public class Slot : MonoBehaviour
         icon.sprite = instance.item.icon;
 
         itemInstance = instance;
-        icon.SetNativeSize(); //stops squishing and stretching of icon`
+        icon.SetNativeSize(); //stops squishing and stretching of icon
         RectTransform rt = icon.transform.GetComponent<RectTransform>();
         float width = rt.sizeDelta.x / rt.sizeDelta.y; //makes height consistant and width proportional between items
         rt.sizeDelta = new Vector2(width * 64, 64);
     }
 
-    public void RemoveItem()
+    public void RemoveItem() //the slot will clear itself of the item it currently is storing
     {
         this.itemInstance = null;
         this.nameBox.text = null;
