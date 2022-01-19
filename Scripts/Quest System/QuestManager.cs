@@ -45,6 +45,24 @@ public class QuestManager : MonoBehaviour
         return failedQuests;
     }
 
+    public bool SlotEmpty(int index) {
+        if (quests[index] == null)
+            return true; //triggers if there is no quest
+
+        return false;
+    }
+
+    // Get a quest if it exists.
+    public bool GetQuest(int index, out Quest _quest) {
+        // quests[index] doesn't return null, so check quest instead.
+        if (SlotEmpty(index)) {
+            _quest = null;
+            return false;
+        }
+
+        _quest = quests[index];
+        return true;
+    }
     public void BeginQuest(string questName)
     {
         for(int i = 0; i < quests.Length; i++)

@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a68b36cfc09caf64db802da86eae8dc1, type: 3}
-  m_Name: TestChar_GeneralKenobi
+  m_Name: You are a bold one
   m_EditorClassIdentifier: 
-  speakText: You're a bold one
+  speakText: You are a bold one
   replies:
-  - replyText: k
+  - replyText: kthxbye
     skillCheck: 0
     checkDC: 0
     failText: 
-    runScript: 0
+    runScript: 1
     scriptToRun: 0
     nextAction: 1
     nextNode: {fileID: 0}
