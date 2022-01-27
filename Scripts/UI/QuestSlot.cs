@@ -29,9 +29,9 @@ public class QuestSlot : MonoBehaviour
 
     public void Selected()
     {
-        if (GetComponentInParent<InventoryDisplay>())
+        if (GetComponentInParent<QuestDisplay>())
         {
-            //GetComponentInParent<InventoryDisplay>().SelectSlot(this);
+            GetComponentInParent<QuestDisplay>().SelectSlot(this);
         }
     }
 

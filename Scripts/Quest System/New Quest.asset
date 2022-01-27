@@ -16,5 +16,5 @@ MonoBehaviour:
   questDescription: A New Quest
   xpReward: 0
   questObjectives:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 1d4450abc9876ce41a93f349aab5f265, type: 2}
   questState: 0

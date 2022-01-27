@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -57,10 +58,37 @@ public class QuestDisplay : MonoBehaviour
         //Set the selected quest display info
         questNameText.SetText ( _slot.quest.questName );
         questDescriptionText.SetText(_slot.quest.questDescription);
-        ClearObjectives();
+
+        ClearObjectives(); //clears the displayed objectives
+        List<QuestObjective> activeObjectives = new List<QuestObjective>(); //sorts the objectives to display so they can be shown seperately
+        List<QuestObjective> completedObjectives = new List<QuestObjective>();
+        List<QuestObjective> failedObjectives = new List<QuestObjective>();
         for (int i = 0; i < _slot.quest.questObjectives.Length; i++)
         {
+            QuestObjective _objective = _slot.quest.questObjectives[i];
+            if (_objective.questState == Quest.QuestState.Active)
+                activeObjectives.Add(_objective);
+            else if (_objective.questState == Quest.QuestState.Completed)
+                completedObjectives.Add(_objective);
+            else if (_objective.questState == Quest.QuestState.Failed)
+                failedObjectives.Add(_objective);
+        }
+
+        //display the sorted objectives
+        for (int i = 0; i < activeObjectives.Count; i++)
+        {
             GameObject newObjectiveSlot = Instantiate(questObjectivePrefab, questObjectiveHolder.transform);
+            newObjectiveSlot.GetComponent<QuestObjectiveSlot>().SetQuestObjective(activeObjectives[i]);
+        }
+        for (int i = 0; i < completedObjectives.Count; i++)
+        {
+            GameObject newObjectiveSlot = Instantiate(questObjectivePrefab, questObjectiveHolder.transform);
+            newObjectiveSlot.GetComponent<QuestObjectiveSlot>().SetQuestObjective(completedObjectives[i]);
+        }
+        for (int i = 0; i < failedObjectives.Count; i++)
+        {
+            GameObject newObjectiveSlot = Instantiate(questObjectivePrefab, questObjectiveHolder.transform);
+            newObjectiveSlot.GetComponent<QuestObjectiveSlot>().SetQuestObjective(failedObjectives[i]);
         }
 
     }
@@ -76,6 +104,6 @@ public class QuestDisplay : MonoBehaviour
     public void ClearObjectives()
     {
         foreach (Transform child in questObjectiveHolder.transform)
-            GameObject.Destroy(child);
+            GameObject.Destroy(child.gameObject);
     }
 }
