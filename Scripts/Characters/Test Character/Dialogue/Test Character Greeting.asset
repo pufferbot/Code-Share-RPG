@@ -10,10 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a68b36cfc09caf64db802da86eae8dc1, type: 3}
-  m_Name: TestChar_Greeting
+  m_Name: Test Character Greeting
   m_EditorClassIdentifier: 
-  speakText: Hello there
+  speakText: Hello There
   replies:
+  - replyText: Hello
+    skillCheck: 0
+    checkDC: 0
+    failText: 
+    runScript: 0
+    scriptToRun: 0
+    nextAction: 0
+    nextNode: {fileID: 11400000, guid: 9d0b5d6185e7e84409ee1a3290add104, type: 2}
   - replyText: General Kenobi
     skillCheck: 0
     checkDC: 0
@@ -21,8 +29,8 @@ MonoBehaviour:
     runScript: 0
     scriptToRun: 0
     nextAction: 0
-    nextNode: {fileID: 11400000, guid: 19349c98d87ce074c8a649e003a0d4dd, type: 2}
-  - replyText: Hi
+    nextNode: {fileID: 11400000, guid: 0c4dc1d14bb8fe8499744c4483154a91, type: 2}
+  - replyText: Bye
     skillCheck: 0
     checkDC: 0
     failText: 

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -5,15 +6,16 @@ using TMPro;
 public class QuestDisplay : MonoBehaviour
 {
     [SerializeField] PlayerStats playerStats;
-    [SerializeField] GameObject questSlot;
+    [SerializeField] GameObject questSlotPrefab;
     public QuestManager questManager;
     public QuestSlot[] questSlots;
     public int selectedQuest = 0;
 
     [SerializeField] TextMeshProUGUI questNameText;
-    [SerializeField] Image iconDisplay;
-    [SerializeField] TextMeshProUGUI questInfoText;
     [SerializeField] TextMeshProUGUI questDescriptionText;
+
+    [SerializeField] GameObject questObjectiveHolder;
+    [SerializeField] GameObject questObjectivePrefab;
 
     void OnEnable(){
         DisplayQuests();
@@ -29,7 +31,7 @@ public class QuestDisplay : MonoBehaviour
         Clear();
         for (int i = 0; i < questManager.quests.Length; i++)
         {
-            GameObject newSlot = Instantiate(questSlot, transform);
+            GameObject newSlot = Instantiate(questSlotPrefab, transform);
         }
 
         questSlots = GetComponentsInChildren<QuestSlot>();
@@ -55,13 +57,39 @@ public class QuestDisplay : MonoBehaviour
 
         //Set the selected quest display info
         questNameText.SetText ( _slot.quest.questName );
-        //questInfoText.SetText(_slot.questInstance.questName);
         questDescriptionText.SetText(_slot.quest.questDescription);
-        iconDisplay.sprite = _slot.icon.sprite;
-        iconDisplay.SetNativeSize();
-        RectTransform rt = iconDisplay.transform.GetComponent<RectTransform>();
-        float width = rt.sizeDelta.x / rt.sizeDelta.y;
-        rt.sizeDelta = new Vector2(width * 128, 128);
+
+        ClearObjectives(); //clears the displayed objectives
+        List<QuestObjective> activeObjectives = new List<QuestObjective>(); //sorts the objectives to display so they can be shown seperately
+        List<QuestObjective> completedObjectives = new List<QuestObjective>();
+        List<QuestObjective> failedObjectives = new List<QuestObjective>();
+        for (int i = 0; i < _slot.quest.questObjectives.Length; i++)
+        {
+            QuestObjective _objective = _slot.quest.questObjectives[i];
+            if (_objective.questState == Quest.QuestState.Active)
+                activeObjectives.Add(_objective);
+            else if (_objective.questState == Quest.QuestState.Completed)
+                completedObjectives.Add(_objective);
+            else if (_objective.questState == Quest.QuestState.Failed)
+                failedObjectives.Add(_objective);
+        }
+
+        //display the sorted objectives
+        for (int i = 0; i < activeObjectives.Count; i++)
+        {
+            GameObject newObjectiveSlot = Instantiate(questObjectivePrefab, questObjectiveHolder.transform);
+            newObjectiveSlot.GetComponent<QuestObjectiveSlot>().SetQuestObjective(activeObjectives[i]);
+        }
+        for (int i = 0; i < completedObjectives.Count; i++)
+        {
+            GameObject newObjectiveSlot = Instantiate(questObjectivePrefab, questObjectiveHolder.transform);
+            newObjectiveSlot.GetComponent<QuestObjectiveSlot>().SetQuestObjective(completedObjectives[i]);
+        }
+        for (int i = 0; i < failedObjectives.Count; i++)
+        {
+            GameObject newObjectiveSlot = Instantiate(questObjectivePrefab, questObjectiveHolder.transform);
+            newObjectiveSlot.GetComponent<QuestObjectiveSlot>().SetQuestObjective(failedObjectives[i]);
+        }
 
     }
 
@@ -71,6 +99,11 @@ public class QuestDisplay : MonoBehaviour
             GameObject.Destroy(child.gameObject);
         questSlots = new QuestSlot[0]; //creates an array with no items
         selectedQuest = 0;
+        ClearObjectives();
     }
-
+    public void ClearObjectives()
+    {
+        foreach (Transform child in questObjectiveHolder.transform)
+            GameObject.Destroy(child.gameObject);
+    }
 }

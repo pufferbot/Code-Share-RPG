@@ -8,7 +8,7 @@ public class QuestObjective : ScriptableObject
 {
     public string objectiveDescription;
     public int xpReward;
-    [HideInInspector] public Quest.QuestState questState;
+    public Quest.QuestState questState;
 
     public void Begin()
     {
