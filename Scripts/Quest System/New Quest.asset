@@ -17,4 +17,6 @@ MonoBehaviour:
   xpReward: 0
   questObjectives:
   - {fileID: 11400000, guid: 1d4450abc9876ce41a93f349aab5f265, type: 2}
+  - {fileID: 11400000, guid: 47d4a6c7d1688814d98d32d6b2434833, type: 2}
+  objectiveTree: {fileID: 11400000, guid: b4267e1939659c245872637e1d5b701f, type: 2}
   questState: 0

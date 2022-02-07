@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adb4ae415b4cff243b78e60c65d1ff42, type: 3}
-  m_Name: New Objective
+  m_Script: {fileID: 11500000, guid: f862d116359d3774c9bc1f24ae1a130a, type: 3}
+  m_Name: Nodetree
   m_EditorClassIdentifier: 
-  objectiveDescription: New Objective
-  xpReward: 0
-  questState: 0
+  nodes:
+  - {fileID: 11400000, guid: ec0b46f3e440ca84f9f73e3ca2ae92c5, type: 2}
+  - {fileID: 11400000, guid: d7c98d20a9ac48e4fb66918a5990777d, type: 2}
+  startingNodes: 00000000
