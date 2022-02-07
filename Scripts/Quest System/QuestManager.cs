@@ -10,39 +10,33 @@ public class QuestManager : MonoBehaviour
     //methods for other scripts wanting to know which quests are active
     public Quest[] GetActiveQuests()
     {
-        Quest[] activeQuests = new Quest[0];
+        List<Quest> activeQuests = new List<Quest>();
         for(int i = 0; i < quests.Length; i++)
         {
             if(quests[i].questState == Quest.QuestState.Active) 
-            { 
-                activeQuests[i] = quests[i]; 
-            }
+                activeQuests.Add(quests[i]);
         }
-        return activeQuests;
+        return activeQuests.ToArray();
     }
     public Quest[] GetCompletedQuests()
     {
-        Quest[] completedQuests = new Quest[0];
+        List<Quest> completedQuests = new List<Quest>();
         for (int i = 0; i < quests.Length; i++)
         {
             if (quests[i].questState == Quest.QuestState.Completed)
-            {
-                completedQuests[i] = quests[i];
-            }
+                completedQuests.Add(quests[i]);
         }
-        return completedQuests;
+        return completedQuests.ToArray();
     }
     public Quest[] GetFailedQuests()
     {
-        Quest[] failedQuests = new Quest[0];
+        List<Quest> failedQuests = new List<Quest>();
         for (int i = 0; i < quests.Length; i++)
         {
             if (quests[i].questState == Quest.QuestState.Failed)
-            {
-                failedQuests[i] = quests[i];
-            }
+                failedQuests.Add(quests[i]);
         }
-        return failedQuests;
+        return failedQuests.ToArray();
     }
 
     public bool SlotEmpty(int index) {
@@ -63,18 +57,19 @@ public class QuestManager : MonoBehaviour
         _quest = quests[index];
         return true;
     }
+    public void StartQuest()
+    {
+        quests[0].Begin();
+    }
+
     public void BeginQuest(string questName)
     {
         for(int i = 0; i < quests.Length; i++)
         {
             if(quests[i].questName == questName)
-            {
                 quests[i].Begin();
-            }
             else
-            {
                 Debug.LogError("No quest with the name " + questName + " was found! Check for typos or improperly deleted quests.");
-            }
         }
     }
     public void CompleteQuest(string questName)
@@ -82,13 +77,9 @@ public class QuestManager : MonoBehaviour
         for (int i = 0; i < quests.Length; i++)
         {
             if (quests[i].questName == questName)
-            {
                 quests[i].Complete();
-            }
             else
-            {
                 Debug.LogError("No quest with the name " + questName + " was found! Check for typos or improperly deleted quests.");
-            }
         }
     }
     public void FailQuest(string questName)
@@ -96,13 +87,9 @@ public class QuestManager : MonoBehaviour
         for (int i = 0; i < quests.Length; i++)
         {
             if (quests[i].questName == questName)
-            {
                 quests[i].Complete();
-            }
             else
-            {
                 Debug.LogError("No quest with the name " + questName + " was found! Check for typos or improperly deleted quests.");
-            }
         }
     }
 

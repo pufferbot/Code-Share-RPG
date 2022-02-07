@@ -8,6 +8,10 @@ public class PlayerStats : CharacterStats
 
     void Start()
     {
+        maxHealth.AttributeBonus(constitution.GetValue(), basicStatMultiplier, basicStatAdditioner); //50-100 base hp
+        maxMagic.AttributeBonus(intelligence.GetValue(), basicStatMultiplier, basicStatAdditioner); //50-100 base magicyness
+        maxStamina.AttributeBonus(strength.GetValue(), basicStatMultiplier, basicStatAdditioner); //50-100 base stamina
+
         SetStats();
         SetInitialSkills();
     }

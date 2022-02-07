@@ -12,17 +12,13 @@ public class ObjectiveTree : ScriptableObject
     {
         ObjectiveNode[] nodesToRun = completedNode.GetNextNodes(); //checks with the node to see which nodes come next
         foreach (ObjectiveNode node in nodesToRun)
-        {
             CheckInputs(node); //checks each to see if it should be started
-        }
     }
 
     public void CheckInputs(ObjectiveNode nodeToRun) //Checks to see if a node's input conditions have been met
     {
         if (nodeToRun.inputType == ObjectiveNode.InputType.Single || nodeToRun.inputType == ObjectiveNode.InputType.Merge) //Both single input and merge input nodes always run
-        {
             nodeToRun.questObjective.Begin();
-        }
         else if (nodeToRun.inputType == ObjectiveNode.InputType.Join) //Join input nodes will only run if all inputs are complete
         {
             bool allComplete = true;

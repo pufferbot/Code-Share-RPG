@@ -11,8 +11,8 @@ public class CharacterStats : MonoBehaviour, ISavable
     
     public Inventory inventory;
 
-    [SerializeField] int basicStatAdditioner = 50;
-    [SerializeField] int basicStatMultiplier = 5;
+    public int basicStatAdditioner = 50;
+    public int basicStatMultiplier = 5;
 
     public Vector3 characterPosition;
     public Vector3 characterRotation;
@@ -71,13 +71,8 @@ public class CharacterStats : MonoBehaviour, ISavable
     public void SetStats()
     {
         //Here we should set the non-skill stats
-        maxHealth.AttributeBonus(constitution.GetValue(), basicStatMultiplier, basicStatAdditioner); //50-100 base hp
         currentHealth = maxHealth.GetValue();
-
-        maxMagic.AttributeBonus(intelligence.GetValue(), basicStatMultiplier, basicStatAdditioner); //50-100 base magicyness
         currentMagic = maxMagic.GetValue();
-
-        maxStamina.AttributeBonus(strength.GetValue(), basicStatMultiplier, basicStatAdditioner); //50-100 base stamina
         currentStamina = maxStamina.GetValue();
 
         carryCapacity.AttributeBonus(strength.GetValue(), basicStatMultiplier, basicStatAdditioner); //50-100 base carry capacity

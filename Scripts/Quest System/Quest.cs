@@ -15,9 +15,19 @@ public class Quest : ScriptableObject
     public string questDescription;
 
     public int xpReward;
+    
     public QuestObjective[] questObjectives;
+    public ObjectiveTree objectiveTree;
 
-    [HideInInspector] public QuestState questState;
+    public QuestState questState;
+
+    public void CompleteObjective(int objective)
+    {
+        questObjectives[objective].Complete();
+        for (int i = 0; i < objectiveTree.nodes.Length; i++)
+            if(objectiveTree.nodes[i].questObjective == questObjectives[objective])
+                objectiveTree.NodeOutput(objectiveTree.nodes[i]);
+    }
 
     public void Begin()
     {
@@ -27,9 +37,7 @@ public class Quest : ScriptableObject
             Debug.Log("Started quest " + questName + ".");
         }
         else
-        {
             Debug.LogError("Quest " + questName + " has already been started.");
-        }
     }
 
     public void Complete()
@@ -41,13 +49,9 @@ public class Quest : ScriptableObject
             Debug.Log("Completed quest " + questName + ".");
         }
         else if (questState == QuestState.Inactive)
-        {
             Debug.LogError("Quest " + questName + " has not been started yet.");
-        }
         else
-        {
             Debug.LogError("Quest " + questName + " has already been finished.");
-        }
     }
 
     public void Fail()
@@ -58,13 +62,9 @@ public class Quest : ScriptableObject
             Debug.Log("Failed quest " + questName + ".");
         }
         else if (questState == QuestState.Inactive)
-        {
             Debug.LogError("Quest " + questName + " has not been started yet.");
-        }
         else
-        {
             Debug.LogError("Quest " + questName + " has already been finished.");
-        }
     }
 
 }

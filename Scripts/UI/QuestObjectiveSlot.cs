@@ -8,8 +8,9 @@ public class QuestObjectiveSlot : MonoBehaviour
     public QuestObjective questObjective = null; //holds the quest objective info; eg. the name or whether it is complete
 
     public Image panel;
-    public Color notSelectedColor;
-    public Color selectedColor;
+    public Sprite activeCheckBox;
+    public Sprite completeCheckBox;
+    public Sprite failedCheckBox;
 
     public TextMeshProUGUI nameBox;
 
@@ -23,24 +24,6 @@ public class QuestObjectiveSlot : MonoBehaviour
     {
         this.questObjective= null;
         this.nameBox.text = null;
-    }
-
-    public void Selected()
-    {
-        if (GetComponentInParent<InventoryDisplay>())
-        {
-            //GetComponentInParent<InventoryDisplay>().SelectSlot(this);
-        }
-    }
-
-    public void Select()
-    {
-        panel.color = selectedColor;
-    }
-
-    public void Deselect()
-    {
-        panel.color = notSelectedColor;
     }
 
 }

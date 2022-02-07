@@ -18,9 +18,7 @@ public class QuestObjective : ScriptableObject
             Debug.Log("Started quest objective " + objectiveDescription + ".");
         }
         else
-        {
             Debug.LogError("Quest objective " + objectiveDescription + " has already been started.");
-        }
     }
 
     public void Complete()
@@ -32,13 +30,9 @@ public class QuestObjective : ScriptableObject
             Debug.Log("Completed quest objective " + objectiveDescription + ".");
         }
         else if (questState == Quest.QuestState.Inactive)
-        {
             Debug.LogError("Quest objective " + objectiveDescription + " has not been started yet.");
-        }
         else
-        {
             Debug.LogError("Quest objective " + objectiveDescription + " has already been finished.");
-        }
     }
 
     public void Fail()
@@ -49,12 +43,8 @@ public class QuestObjective : ScriptableObject
             Debug.Log("Failed quest objective " + objectiveDescription + ".");
         }
         else if (questState == Quest.QuestState.Inactive)
-        {
             Debug.LogError("Quest objective " + objectiveDescription + " has not been started yet.");
-        }
         else
-        {
             Debug.LogError("Quest objective " + objectiveDescription + " has already been finished.");
-        }
     }
 }

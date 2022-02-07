@@ -29,7 +29,7 @@ public class QuestDisplay : MonoBehaviour
     public void DisplayQuests()
     {
         Clear();
-        for (int i = 0; i < questManager.quests.Length; i++)
+        for (int i = 0; i < questManager.GetActiveQuests().Length; i++) //make a prefab for each active quest
         {
             GameObject newSlot = Instantiate(questSlotPrefab, transform);
         }
@@ -38,10 +38,7 @@ public class QuestDisplay : MonoBehaviour
 
         for (int i = 0; i < questSlots.Length; i++)
         {
-            Quest instance;
-
-            if (questManager.GetQuest(i, out instance))
-                questSlots[i].SetQuest(instance);
+            questSlots[i].SetQuest(questManager.GetActiveQuests()[i]);
             if (i == selectedQuest)
                 SelectSlot(questSlots[i]);
         }
@@ -50,9 +47,7 @@ public class QuestDisplay : MonoBehaviour
     public void SelectSlot(QuestSlot _slot)
     {
         for(int i = 0; i < questSlots.Length; i++)
-        {
             questSlots[i].Deselect();
-        }
         _slot.Select();
 
         //Set the selected quest display info
@@ -78,17 +73,23 @@ public class QuestDisplay : MonoBehaviour
         for (int i = 0; i < activeObjectives.Count; i++)
         {
             GameObject newObjectiveSlot = Instantiate(questObjectivePrefab, questObjectiveHolder.transform);
-            newObjectiveSlot.GetComponent<QuestObjectiveSlot>().SetQuestObjective(activeObjectives[i]);
+            QuestObjectiveSlot newObjSlot = newObjectiveSlot.GetComponent<QuestObjectiveSlot>();
+            newObjSlot.SetQuestObjective(activeObjectives[i]);
+            newObjSlot.panel.sprite = newObjSlot.activeCheckBox;
         }
         for (int i = 0; i < completedObjectives.Count; i++)
         {
             GameObject newObjectiveSlot = Instantiate(questObjectivePrefab, questObjectiveHolder.transform);
-            newObjectiveSlot.GetComponent<QuestObjectiveSlot>().SetQuestObjective(completedObjectives[i]);
+            QuestObjectiveSlot newObjSlot = newObjectiveSlot.GetComponent<QuestObjectiveSlot>();
+            newObjSlot.SetQuestObjective(completedObjectives[i]);
+            newObjSlot.panel.sprite = newObjSlot.completeCheckBox;
         }
         for (int i = 0; i < failedObjectives.Count; i++)
         {
             GameObject newObjectiveSlot = Instantiate(questObjectivePrefab, questObjectiveHolder.transform);
-            newObjectiveSlot.GetComponent<QuestObjectiveSlot>().SetQuestObjective(failedObjectives[i]);
+            QuestObjectiveSlot newObjSlot = newObjectiveSlot.GetComponent<QuestObjectiveSlot>();
+            newObjSlot.SetQuestObjective(failedObjectives[i]);
+            newObjSlot.panel.sprite = newObjSlot.failedCheckBox;
         }
 
     }

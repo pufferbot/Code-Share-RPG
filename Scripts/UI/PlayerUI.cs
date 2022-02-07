@@ -58,7 +58,6 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] Image magicBar;
     [SerializeField] Image staminaBar;
 
-
     [SerializeField] float lerpDuration = 1f;
 
     private void Awake()
