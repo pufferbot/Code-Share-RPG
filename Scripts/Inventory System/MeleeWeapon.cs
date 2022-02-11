@@ -4,7 +4,7 @@ using UnityEngine;
 
 [System.Serializable]
 [CreateAssetMenu(menuName = "Items/Melee Weapon", fileName = "NewMeleeWeapon.asset")]
-public class MeleeWeapon : ScriptableObject
+public class MeleeWeapon : Item
 {
     public int damage;
     public float attackSpeed;

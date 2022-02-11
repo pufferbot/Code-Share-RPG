@@ -10,6 +10,7 @@ public class CharacterStats : MonoBehaviour, ISavable
     public GameManager gameManager;
     
     public Inventory inventory;
+    public Item equippedItem;
 
     public int basicStatAdditioner = 50;
     public int basicStatMultiplier = 5;
