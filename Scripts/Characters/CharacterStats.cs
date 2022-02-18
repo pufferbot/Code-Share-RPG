@@ -11,6 +11,9 @@ public class CharacterStats : MonoBehaviour, ISavable
     
     public Inventory inventory;
     public Item equippedItem;
+    
+    public GameObject itemHolder;
+    public GameObject heldItem;
 
     public int basicStatAdditioner = 50;
     public int basicStatMultiplier = 5;
@@ -218,6 +221,15 @@ public class CharacterStats : MonoBehaviour, ISavable
         }
     }
 
+    public void EquipItem(ItemInstance itemToEquip)
+    {
+        if(itemToEquip.item is MeleeWeapon meleeWeapon)
+        {
+            heldItem = Instantiate(meleeWeapon.heldPrefab, itemHolder.transform);
+            equippedItem = itemToEquip.item;
+        }
+            
+    }
 
     //Saving and Loading
     public object CaptureState()
