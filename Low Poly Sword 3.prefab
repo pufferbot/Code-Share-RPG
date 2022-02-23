@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5909365181740466497}
   - component: {fileID: 8495687870632375691}
   - component: {fileID: 7991148715740795999}
+  - component: {fileID: 4060635538089822840}
   m_Layer: 0
   m_Name: Low Poly Sword 3
   m_TagString: Untagged
@@ -103,3 +104,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4060635538089822840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7991148715740795998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50b701fd44007214db126521b8633411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
