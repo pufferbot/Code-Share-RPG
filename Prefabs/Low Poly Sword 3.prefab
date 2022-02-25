@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8495687870632375691}
   - component: {fileID: 7991148715740795999}
   - component: {fileID: 4060635538089822840}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Low Poly Sword 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
