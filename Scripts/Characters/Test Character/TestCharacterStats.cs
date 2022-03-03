@@ -28,7 +28,7 @@ public class TestCharacterStats : CharacterStats
 
     public override void RefreshStats()
     {
-        nPCHealthBar.SetHealth((float)maxHealth.GetValue(), (float)currentHealth);
+        nPCHealthBar.SetHealth(((float)maxHealth.GetValue()) / ((float) currentHealth));
     }
 
     public override void MoveCharacter(Vector3 position, Vector3 rotation){

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3992000008248914446}
   - component: {fileID: 6368159113374996}
   - component: {fileID: 1245203254371893735}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: lbs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 5474992534055448334}
   - component: {fileID: 4855120689656266675}
   - component: {fileID: 2545003964978729700}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Weight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +280,7 @@ GameObject:
   - component: {fileID: 5381126270295261175}
   - component: {fileID: 374162577907501751}
   - component: {fileID: 984003159816086322}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -414,7 +414,7 @@ GameObject:
   - component: {fileID: 3646776591152963217}
   - component: {fileID: 881242700757782636}
   - component: {fileID: 6267815450455476713}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -548,7 +548,7 @@ GameObject:
   - component: {fileID: 5249305242093578986}
   - component: {fileID: 5249305242093578988}
   - component: {fileID: 5249305242093578989}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -625,7 +625,7 @@ GameObject:
   - component: {fileID: 3517699352687764689}
   - component: {fileID: 6452827480651502512}
   - component: {fileID: 2028353797784280590}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -784,7 +784,7 @@ GameObject:
   - component: {fileID: 8287598660280499791}
   - component: {fileID: 1538007994189070657}
   - component: {fileID: 5983765339995615543}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}

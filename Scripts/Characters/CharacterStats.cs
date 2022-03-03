@@ -30,8 +30,16 @@ public class CharacterStats : MonoBehaviour, ISavable
     public float currentMagic;
     public Stat maxStamina;
     public float currentStamina;
+
+    //stuff related to regeneration
+    float lastLostHealth = 0f;
+    public float healthRegenTimer = 5f;
     bool isRegenHealth = false;
+    float lastLostMagic = 0f;
+    public float magicRegenTimer = 2f;
     bool isRegenMagic = false;
+    float lastLostStamina = 0f;
+    public float staminaRegenTimer = 1.5f;
     bool isRegenStamina = false;
 
     public Stat damageResistance;
@@ -159,6 +167,7 @@ public class CharacterStats : MonoBehaviour, ISavable
         //Then, if THAT number has a decimal, it rounds it down, finally giving us the total damage
 
         currentHealth -= damage;
+        lastLostHealth = Time.time;
         Debug.Log(transform.name + " took " + damage + " damage");
 
         if(currentHealth >= 0)
@@ -173,6 +182,7 @@ public class CharacterStats : MonoBehaviour, ISavable
 
     public void DamageStamina(float damage)
     {
+        lastLostStamina = Time.time;
         if(currentStamina > 0)
         {
             currentStamina -= damage;
@@ -180,13 +190,23 @@ public class CharacterStats : MonoBehaviour, ISavable
         if (currentStamina < 0)
             currentStamina = 0;
     }
+    public void DamageMagic(float damage)
+    {
+        lastLostMagic = Time.time;
+        if (currentMagic > 0)
+        {
+            currentMagic -= damage;
+        }
+        if (currentMagic < 0)
+            currentMagic = 0;
+    }
 
     public IEnumerator RegenStats()
     {
-        if (!isRegenHealth) //stops function from having multiple instances at the same time
+        if (!isRegenHealth && Time.time > lastLostHealth + healthRegenTimer) //stops function from having multiple instances at the same time
         {
             isRegenHealth = true;
-            while (currentHealth < maxHealth.GetValue()) 
+            while (currentHealth < maxHealth.GetValue())
             {
                 currentHealth += (constitution.GetValue() + 6f)/10f;
                 if (currentHealth > maxHealth.GetValue())
@@ -195,7 +215,7 @@ public class CharacterStats : MonoBehaviour, ISavable
             }
             isRegenHealth = false;
         }
-        if (!isRegenMagic)
+        if (!isRegenMagic && Time.time > lastLostMagic + magicRegenTimer)
         {
             isRegenMagic = true;
             while (currentMagic < maxMagic.GetValue()) 
@@ -207,7 +227,7 @@ public class CharacterStats : MonoBehaviour, ISavable
             }
             isRegenMagic = false;
         }
-        if (!isRegenStamina)
+        if (!isRegenStamina && Time.time > lastLostStamina + staminaRegenTimer)
         {
             isRegenStamina = true;
             while (currentStamina < maxStamina.GetValue()) 
@@ -285,11 +305,10 @@ public class CharacterStats : MonoBehaviour, ISavable
         currentHealth = saveData.currentHealth;
         currentMagic = saveData.currentMagic;
         currentStamina = saveData.currentStamina;
-        maxHealth.SetBaseValue(saveData.statsList[0]); maxMagic.SetBaseValue(saveData.statsList[1]); maxStamina.SetBaseValue(saveData.statsList[2]); 
-        damageResistance.SetBaseValue(saveData.statsList[3]); carryCapacity.SetBaseValue(saveData.statsList[4]);  
-        strength.SetBaseValue(saveData.statsList[5]); intelligence.SetBaseValue(saveData.statsList[6]); dexterity.SetBaseValue(saveData.statsList[7]); 
-        charisma.SetBaseValue(saveData.statsList[8]); constitution.SetBaseValue(saveData.statsList[9]); 
-
+        maxHealth.SetBaseValue(saveData.statsList[0]); maxMagic.SetBaseValue(saveData.statsList[1]); maxStamina.SetBaseValue(saveData.statsList[2]);
+        damageResistance.SetBaseValue(saveData.statsList[3]); carryCapacity.SetBaseValue(saveData.statsList[4]);
+        strength.SetBaseValue(saveData.statsList[5]); intelligence.SetBaseValue(saveData.statsList[6]); dexterity.SetBaseValue(saveData.statsList[7]);
+        charisma.SetBaseValue(saveData.statsList[8]); constitution.SetBaseValue(saveData.statsList[9]);
     }
     [System.Serializable]
     private struct SaveData

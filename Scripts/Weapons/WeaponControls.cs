@@ -20,7 +20,7 @@ public class WeaponControls : MonoBehaviour
     public void StartMeleeAttack(MeleeWeapon meleeWeapon)
     {
         isAttacking = true;
-        print("Attacking with " + meleeWeapon.itemName);
+        //print("Attacking with " + meleeWeapon.itemName);
         playerStats.heldItem.GetComponent<Animator>().SetTrigger("Attack");
     }
 
@@ -32,7 +32,9 @@ public class WeaponControls : MonoBehaviour
             {
                 if (hit.transform.GetComponent<CharacterStats>())
                 {
-                    hit.transform.GetComponent<CharacterStats>().DamageHealth(meleeWeapon.damage); //final damage = base damage * ((50 + (melee skill + strength*2))/100)
+                    float finalDamage = meleeWeapon.damage * ((50f + (playerStats.skill_Melee.GetValue() + playerStats.strength.GetValue() * 2f)) / 100f);
+                    print(finalDamage);
+                    hit.transform.GetComponent<CharacterStats>().DamageHealth(Mathf.RoundToInt(finalDamage)); //final damage = base damage * ((50 + (melee skill + strength*2))/100) rounded to nearest integer
                 }
             }
         }
@@ -40,8 +42,7 @@ public class WeaponControls : MonoBehaviour
 
     bool isPlaying(Animator anim, string stateName)
     {
-        if (anim.GetCurrentAnimatorStateInfo(animLayer).IsName(stateName) &&
-                anim.GetCurrentAnimatorStateInfo(animLayer).normalizedTime < 1.0f)
+        if (anim.GetCurrentAnimatorStateInfo(animLayer).IsName(stateName) && anim.GetCurrentAnimatorStateInfo(animLayer).normalizedTime < 1.0f)
             return true;
         else
             return false;

@@ -7,15 +7,12 @@ using TMPro;
 public class NPCHealthBar : MonoBehaviour
 {
     [SerializeField] Image healthBar;
-    [SerializeField] TextMeshProUGUI textBox;
     [SerializeField] float lerpDuration = .05f;
 
-    public void SetHealth(float maxHealth, float currentHealth)
+    public void SetHealth(float amount)
     {
-        float amount = maxHealth / currentHealth;
         amount = 1 / amount;
         StartCoroutine(BarLerp(healthBar, healthBar.fillAmount, amount));
-        textBox.text = Mathf.CeilToInt(currentHealth) + "/" + maxHealth;
     }
 
     IEnumerator BarLerp(Image valueToLerp, float startValue, float endValue)
