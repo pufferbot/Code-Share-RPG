@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] MouseLook mouseLook;
     [SerializeField] PlayerUI playerUI;
     [SerializeField] Interact interact;
+    [SerializeField] WeaponControls weaponControls;
     [SerializeField] DialogueManager dialogueManager;
 
     Vector2 horizontalInput;
@@ -48,6 +49,8 @@ public class InputManager : MonoBehaviour
 
         playerControls.GroundMovement.MouseX.performed += ctx => mouseInput.x = ctx.ReadValue<float>();
         playerControls.GroundMovement.MouseY.performed += ctx => mouseInput.y = ctx.ReadValue<float>();
+        
+        playerControls.GroundMovement.Attack.performed += _ => weaponControls.OnAttack();
 
         //PauseMenu
         playerControls.PauseMenu.Resume.performed += _ => playerUI.TogglePauseMenu();

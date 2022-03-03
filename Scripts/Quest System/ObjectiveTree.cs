@@ -7,6 +7,13 @@ using UnityEngine;
 public class ObjectiveTree : ScriptableObject
 {
     public ObjectiveNode[] nodes;
+    public int[] startingNodes;
+
+    public void StartTree()
+    {
+        for(int i = 0; i < startingNodes.Length; i++)
+            nodes[startingNodes[i]].questObjective.Begin();
+    }
 
     public void NodeOutput(ObjectiveNode completedNode) //Run when a node's objective completes, and you want to run its outputs. Input the completed node
     {

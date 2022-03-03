@@ -34,6 +34,7 @@ public class Quest : ScriptableObject
         if (questState == QuestState.Inactive)
         {
             questState = QuestState.Active;
+            objectiveTree.StartTree();
             Debug.Log("Started quest " + questName + ".");
         }
         else

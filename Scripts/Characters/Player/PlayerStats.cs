@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerStats : CharacterStats
 {
     [SerializeField] PlayerUI playerUI;
+    public ItemInstance testItem;
 
     void Start()
     {
