@@ -11,11 +11,7 @@ GameObject:
   - component: {fileID: 6801645002949927466}
   - component: {fileID: 1294959866367399786}
   - component: {fileID: 1832459736443764463}
-<<<<<<< HEAD
   m_Layer: 5
-=======
-  m_Layer: 0
->>>>>>> main
   m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,11 +147,7 @@ GameObject:
   - component: {fileID: 7201195807181426100}
   - component: {fileID: 5567814343577308781}
   - component: {fileID: 644011218983683027}
-<<<<<<< HEAD
   m_Layer: 5
-=======
-  m_Layer: 0
->>>>>>> main
   m_Name: Quest Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
