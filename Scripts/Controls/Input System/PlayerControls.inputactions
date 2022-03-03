@@ -84,6 +84,7 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+<<<<<<< HEAD
                 },
                 {
                     "name": "Aim/Block",
@@ -92,6 +93,8 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+=======
+>>>>>>> main
                 }
             ],
             "bindings": [
@@ -343,6 +346,7 @@
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
+<<<<<<< HEAD
                     "groups": "Keyboard & Mouse",
                     "action": "Attack",
                     "isComposite": false,
@@ -378,6 +382,10 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Aim/Block",
+=======
+                    "groups": "",
+                    "action": "Attack",
+>>>>>>> main
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -499,6 +507,7 @@
                     "name": "",
                     "id": "b95d2b68-76c8-4629-af84-07b08ad9e174",
                     "path": "<Gamepad>/buttonSouth",
+<<<<<<< HEAD
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -524,6 +533,33 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
+=======
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bacf3aa8-e3d2-4fda-b903-f031672e2112",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "abc861ba-5482-4cb3-bcf4-b22507ee6aab",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+>>>>>>> main
                     "action": "Skip",
                     "isComposite": false,
                     "isPartOfComposite": false

@@ -11,7 +11,11 @@ GameObject:
   - component: {fileID: 6929120075107812470}
   - component: {fileID: 6929120075107812464}
   - component: {fileID: 6929120075107812471}
+<<<<<<< HEAD
   m_Layer: 5
+=======
+  m_Layer: 0
+>>>>>>> main
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +153,11 @@ GameObject:
   - component: {fileID: 6929120076724587664}
   - component: {fileID: 6929120076724587670}
   - component: {fileID: 6929120076724587669}
+<<<<<<< HEAD
   m_Layer: 5
+=======
+  m_Layer: 0
+>>>>>>> main
   m_Name: Quest Objective Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -284,7 +292,11 @@ GameObject:
   - component: {fileID: 7683178508845349095}
   - component: {fileID: 7683178508845349093}
   - component: {fileID: 7683178508845349094}
+<<<<<<< HEAD
   m_Layer: 5
+=======
+  m_Layer: 0
+>>>>>>> main
   m_Name: CheckBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
