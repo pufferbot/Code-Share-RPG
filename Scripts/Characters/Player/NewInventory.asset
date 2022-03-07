@@ -31,4 +31,6 @@ MonoBehaviour:
     quantity: 0
   - item: {fileID: 11400000, guid: 32629556261231e4a9979a04d8373a2e, type: 2}
     quantity: 0
+  - item: {fileID: 11400000, guid: 8ed9cf9ad20be8f488a006b8380545e7, type: 2}
+    quantity: 0
   gold: 467

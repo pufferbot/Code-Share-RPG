@@ -57,18 +57,23 @@ public class InventoryDisplay : MonoBehaviour
         for(int i = 0; i < inventorySlots.Length; i++)
         {
             inventorySlots[i].Deselect();
+            if (inventorySlots[i] == _slot)
+                selectedItem = i;
         }
+        
         _slot.Select();
 
         //Set the selected item display info
         itemNameText.SetText ( _slot.itemInstance.GetItemName() );
-        //itemInfoText.SetText(_slot.itemInstance.GetItemName());
         itemDescriptionText.SetText(_slot.itemInstance.GetItemDescription());
         iconDisplay.sprite = _slot.icon.sprite;
         iconDisplay.SetNativeSize();
         RectTransform rt = iconDisplay.transform.GetComponent<RectTransform>();
         float width = rt.sizeDelta.x / rt.sizeDelta.y;
         rt.sizeDelta = new Vector2(width * 128, 128);
+
+        //Equip if possible
+        playerStats.EquipItem(_slot.itemInstance);
 
     }
 
@@ -77,7 +82,6 @@ public class InventoryDisplay : MonoBehaviour
         foreach (Transform child in transform)
             GameObject.Destroy(child.gameObject);
         inventorySlots = new Slot[0]; //creates an array with no items
-        selectedItem = 0;
     }
 
 }

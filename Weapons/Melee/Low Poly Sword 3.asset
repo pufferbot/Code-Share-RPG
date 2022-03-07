@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Low Poly Sword 3
   m_EditorClassIdentifier: 
   itemName: Low Poly Sword 3
-  icon: {fileID: 0}
+  icon: {fileID: -5650393996925402112, guid: 60c9d44ee514e3d4ab5531ab7ed32c7e, type: 3}
   value: 0
   weight: 0
   stackable: 0
-  description: 
+  description: A low poly sword for testing
   heldPrefab: {fileID: 7991148715740795998, guid: fd597745a265ccf4188b5c9663c84225, type: 3}
   damage: 10
   attackSpeed: 0

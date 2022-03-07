@@ -243,12 +243,17 @@ public class CharacterStats : MonoBehaviour, ISavable
 
     public void EquipItem(ItemInstance itemToEquip)
     {
+        //Remove any equipped items
+        foreach (Transform child in itemHolder.transform)
+            GameObject.Destroy(child.gameObject);
+        equippedItem = null;
+
+        //Equip the new item
         if(itemToEquip.item is MeleeWeapon meleeWeapon)
         {
             heldItem = Instantiate(meleeWeapon.heldPrefab, itemHolder.transform);
             equippedItem = itemToEquip.item;
         }
-            
     }
 
     //Saving and Loading
