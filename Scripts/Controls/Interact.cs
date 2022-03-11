@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Interact : MonoBehaviour
 {
+    [SerializeField] PlayerStats playerStats;
     public float interactRange;
     public LayerMask layerMask;
 
@@ -14,7 +15,7 @@ public class Interact : MonoBehaviour
         {
             if (hit.transform.GetComponent<InteractComponent>())
             {
-                hit.transform.GetComponent<InteractComponent>().OnInteract();
+                hit.transform.GetComponent<InteractComponent>().OnInteract(playerStats);
             }
         }
     }

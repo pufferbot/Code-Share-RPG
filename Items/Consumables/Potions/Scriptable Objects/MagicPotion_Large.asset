@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b89225da66e993747812188a97f41f3a, type: 3}
+  m_Name: MagicPotion_Large
+  m_EditorClassIdentifier: 
+  itemName: Large Magic Potion
+  icon: {fileID: 7974451364962962811, guid: 60c9d44ee514e3d4ab5531ab7ed32c7e, type: 3}
+  prefab: {fileID: 1484773373678988619, guid: 93c6d034e1b133c4a9b9928d4660ace1, type: 3}
+  value: 34
+  weight: 2
+  stackable: 1
+  description: 
+  potionType: 1
+  modifier: 45

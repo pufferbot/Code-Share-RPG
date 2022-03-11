@@ -7,6 +7,7 @@ public class Item : ScriptableObject
 {
     public string itemName;
     public Sprite icon;
+    public GameObject prefab;
     public int value;
     public float weight;
     public bool stackable;

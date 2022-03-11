@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b89225da66e993747812188a97f41f3a, type: 3}
+  m_Name: StaminaPotion_Large
+  m_EditorClassIdentifier: 
+  itemName: Large Stamina Potion
+  icon: {fileID: -2241018292488586020, guid: 60c9d44ee514e3d4ab5531ab7ed32c7e, type: 3}
+  prefab: {fileID: 4223274790489818574, guid: 87bb2e92a2a8713459924a97811b2ff8, type: 3}
+  value: 34
+  weight: 2
+  stackable: 1
+  description: 
+  potionType: 2
+  modifier: 45

@@ -10,7 +10,7 @@ public class DialogueComponent : InteractComponent
 
     public CustomNodeBehavior[] CustomScripts;
 
-    public override void OnInteract()
+    public override void OnInteract(PlayerStats playerStats = null)
     {
         playerUI = dialogueManager.playerUI;
         playerUI.ToggleDialogue();

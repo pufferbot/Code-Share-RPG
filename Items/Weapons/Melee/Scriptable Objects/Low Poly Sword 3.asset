@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Low Poly Sword 3
   icon: {fileID: -5650393996925402112, guid: 60c9d44ee514e3d4ab5531ab7ed32c7e, type: 3}
+  prefab: {fileID: 8452081905087156100, guid: 1d802240a686d2f4aa9fb49d9aaffc75, type: 3}
   value: 0
   weight: 0
   stackable: 0
