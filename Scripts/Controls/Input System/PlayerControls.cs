@@ -91,6 +91,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""Hold"",
+                    ""type"": ""Button"",
+                    ""id"": ""23ce3f94-310d-40b3-9a13-0fef5287f95e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""Attack"",
                     ""type"": ""Button"",
                     ""id"": ""2e7d3dad-bc1a-4eff-85e2-74945704bfce"",
@@ -393,6 +401,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Aim/Block"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""23f403fc-e6ce-4275-8ce1-92ed5d9859de"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Hold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -607,6 +626,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_GroundMovement_Menu = m_GroundMovement.FindAction("Menu", throwIfNotFound: true);
         m_GroundMovement_Pause = m_GroundMovement.FindAction("Pause", throwIfNotFound: true);
         m_GroundMovement_Interact = m_GroundMovement.FindAction("Interact", throwIfNotFound: true);
+        m_GroundMovement_Hold = m_GroundMovement.FindAction("Hold", throwIfNotFound: true);
         m_GroundMovement_Attack = m_GroundMovement.FindAction("Attack", throwIfNotFound: true);
         m_GroundMovement_AimBlock = m_GroundMovement.FindAction("Aim/Block", throwIfNotFound: true);
         // PauseMenu
@@ -676,6 +696,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_GroundMovement_Menu;
     private readonly InputAction m_GroundMovement_Pause;
     private readonly InputAction m_GroundMovement_Interact;
+    private readonly InputAction m_GroundMovement_Hold;
     private readonly InputAction m_GroundMovement_Attack;
     private readonly InputAction m_GroundMovement_AimBlock;
     public struct GroundMovementActions
@@ -691,6 +712,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Menu => m_Wrapper.m_GroundMovement_Menu;
         public InputAction @Pause => m_Wrapper.m_GroundMovement_Pause;
         public InputAction @Interact => m_Wrapper.m_GroundMovement_Interact;
+        public InputAction @Hold => m_Wrapper.m_GroundMovement_Hold;
         public InputAction @Attack => m_Wrapper.m_GroundMovement_Attack;
         public InputAction @AimBlock => m_Wrapper.m_GroundMovement_AimBlock;
         public InputActionMap Get() { return m_Wrapper.m_GroundMovement; }
@@ -729,6 +751,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Interact.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnInteract;
+                @Hold.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnHold;
+                @Hold.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnHold;
+                @Hold.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnHold;
                 @Attack.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnAttack;
                 @Attack.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnAttack;
                 @Attack.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnAttack;
@@ -766,6 +791,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Hold.started += instance.OnHold;
+                @Hold.performed += instance.OnHold;
+                @Hold.canceled += instance.OnHold;
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
@@ -904,6 +932,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnMenu(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnHold(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnAimBlock(InputAction.CallbackContext context);
     }
