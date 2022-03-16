@@ -7,7 +7,7 @@ using UnityEngine;
 public class HoldComponent : MonoBehaviour
 {
     
-    [SerializeField] private Rigidbody rigidbody;
+    [SerializeField] private new Rigidbody rigidbody;
     public Rigidbody Rigidbody => rigidbody;
 
     private void Awake()

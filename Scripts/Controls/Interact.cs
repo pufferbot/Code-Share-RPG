@@ -29,11 +29,61 @@ public class Interact : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, interactRange, layerMask))
         {
-            if (hit.transform.GetComponent<InteractComponent>(out InteractComponent interactComponent))
+            if (hit.transform.GetComponent<InteractComponent>())
             {
+                InteractComponent interactComponent = hit.transform.GetComponent<InteractComponent>();
                 interactComponent.OnInteract(playerStats);
             }
         }
+    }
+
+    public void OnHold()
+    {
+        if(!currentHeld)
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.forward, out hit, interactRange, layerMask))
+            {
+                if (hit.transform.GetComponent<HoldComponent>())
+                {
+                    HoldComponent holdComponent = hit.transform.GetComponent<HoldComponent>();
+                    //Is it a different object than the one we already have?
+                    if(holdComponent != currentHit)
+                    {
+                        //If different deselect the current object
+                        if(currentHit)
+                            currentHit.MarkActive(false);
+                        
+                        //Hold the new object
+                        currentHit = holdComponent;
+                        currentHit.MarkActive(true);
+                    }
+                }
+                else
+                {
+                    //The object pointed at wasn't holdable, so deselect the current object
+                    if(currentHit)
+                    {
+                        currentHit.MarkActive(false);
+                        currentHit = null;
+                    }
+                }
+            }
+            else
+            {
+                //Not pointing at anything, so deselect the current object
+                if(currentHit)
+                {
+                    currentHit.MarkActive(false);
+                    currentHit = null;
+                }
+            }
+
+            //If it worked, then pick it up
+            if(currentHit)
+                PickUp();
+        }
+        
     }
 
     //Picking up a physics object
@@ -51,22 +101,6 @@ public class Interact : MonoBehaviour
 
         currentHeld.Rigidbody.AddExplosionForce(throwForce, holdLocation.position, 1f, .5f, ForceMode.Impulse);
         currentHeld = null;
-    }
-
-    public void OnHold()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, interactRange, layerMask))
-        {
-            if (hit.transform.GetComponent<HoldComponent>(out HoldComponent holdComponent))
-            {
-                if(holdComponent != currentHeld)
-                {
-                    if(currentHeld)
-                        currentHeld.MarkActive(false);
-                }
-            }
-        }
     }
 
 }
