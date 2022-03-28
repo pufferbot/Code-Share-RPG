@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(SpringJoint))]
 public class HoldComponent : MonoBehaviour
 {
     

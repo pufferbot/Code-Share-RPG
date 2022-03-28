@@ -15,7 +15,7 @@ public class Interact : MonoBehaviour
     public float throwForce = 10f;
     private HoldComponent currentHit;
     private HoldComponent currentHeld;
-    private ConfigurableJoint currentJoint;
+    private CharacterJoint currentJoint;
 
     private void Awake()
     {
@@ -71,12 +71,8 @@ public class Interact : MonoBehaviour
             }
             else
             {
-                //Not pointing at anything, so deselect the current object
-                if(currentHit)
-                {
-                    currentHit.MarkActive(false);
-                    currentHit = null;
-                }
+                currentHit.MarkActive(false);
+                currentHit = null;
             }
 
             //If it worked, then pick it up
@@ -89,7 +85,11 @@ public class Interact : MonoBehaviour
     //Picking up a physics object
     public void PickUp()
     {
-        currentJoint = currentHit.gameObject.AddComponent<ConfigurableJoint>();
+        //currentJoint = currentHit.gameObject.AddComponent<CharacterJoint>();
+        //currentJoint.connectedBody = holdLocation;
+
+        currentHit.GetComponent<Rigidbody>().useGravity = false;
+        currentHit.transform.SetParent(holdLocation);
 
         currentHeld = currentHit;
     }
@@ -97,9 +97,11 @@ public class Interact : MonoBehaviour
     //Releasing the held object
     public void Release()
     {
-        Destroy(currentJoint);
+        //Destroy(currentJoint);
 
-        currentHeld.Rigidbody.AddExplosionForce(throwForce, holdLocation.position, 1f, .5f, ForceMode.Impulse);
+        currentHeld.transform.SetParent(null);
+
+        currentHeld.Rigidbody.AddForce(transform.forward * throwForce, ForceMode.Impulse);
         currentHeld = null;
     }
 
