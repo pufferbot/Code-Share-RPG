@@ -85,11 +85,11 @@ public class Interact : MonoBehaviour
     //Picking up a physics object
     public void PickUp()
     {
-        //currentJoint = currentHit.gameObject.AddComponent<CharacterJoint>();
-        //currentJoint.connectedBody = holdLocation;
+        currentJoint = currentHit.gameObject.AddComponent<CharacterJoint>();
+        currentJoint.connectedBody = holdLocation;
 
-        currentHit.GetComponent<Rigidbody>().useGravity = false;
-        currentHit.transform.SetParent(holdLocation);
+        //currentHit.gameObject.set
+        //currentHit.GetComponent<Rigidbody>().useGravity = false;
 
         currentHeld = currentHit;
     }
@@ -97,9 +97,9 @@ public class Interact : MonoBehaviour
     //Releasing the held object
     public void Release()
     {
-        //Destroy(currentJoint);
+        Destroy(currentJoint);
 
-        currentHeld.transform.SetParent(null);
+        //currentHeld.transform.SetParent(null);
 
         currentHeld.Rigidbody.AddForce(transform.forward * throwForce, ForceMode.Impulse);
         currentHeld = null;
